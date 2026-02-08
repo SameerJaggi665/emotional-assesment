@@ -66,5 +66,7 @@ if st.button("🔍 Predict Emotion"):
 
         st.subheader("📊 Emotion Confidence Breakdown")
 
-        for emo, prob in zip(model.classes_, probabilities):
-            st.progress(float(prob), text=f"{emo.capitalize()} — {prob*100:.2f}%")
+ for emo, prob in zip(model.classes_, probabilities):
+    emo_name = label_map[emo]
+    st.progress(float(prob), text=f"{emo_name.capitalize()} — {prob*100:.2f}%")
+
