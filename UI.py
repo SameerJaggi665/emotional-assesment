@@ -27,6 +27,17 @@ emotion_emoji = {
     "neutral": "😐"
 }
 
+# 🔹 Label mapping (FIX)
+label_map = {
+    0: "joy",
+    1: "sadness",
+    2: "anger",
+    3: "fear",
+    4: "surprise",
+    5: "love",
+    6: "neutral"
+}
+
 text = st.text_area(
     "✍️ Enter your text",
     placeholder="I feel really excited about my new job!"
@@ -41,16 +52,19 @@ if st.button("🔍 Predict Emotion"):
         prediction = model.predict(transformed_text)[0]
         probabilities = model.predict_proba(transformed_text)[0]
 
+        # 🔹 Convert numeric prediction to emotion
+        emotion = label_map[prediction]
+
         confidence = np.max(probabilities) * 100
-        emoji = emotion_emoji.get(prediction.lower(), "🤔")
+        emoji = emotion_emoji.get(emotion, "🤔")
 
         st.markdown("---")
         st.subheader("🧾 Prediction Result")
 
-        st.success(f"**Emotion:** {prediction.capitalize()} {emoji}")
+        st.success(f"**Emotion:** {emotion.capitalize()} {emoji}")
         st.info(f"**Confidence:** {confidence:.2f}%")
 
         st.subheader("📊 Emotion Confidence Breakdown")
 
-        for emotion, prob in zip(model.classes_, probabilities):
-            st.progress(float(prob), text=f"{emotion.capitalize()} — {prob*100:.2f}%")
+        for emo, prob in zip(model.classes_, probabilities):
+            st.progress(float(prob), text=f"{emo.capitalize()} — {prob*100:.2f}%")
