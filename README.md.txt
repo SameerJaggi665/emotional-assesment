@@ -19,4 +19,5 @@ This project predicts human emotions from text using:
 
 ### Sample Predictions
 "I feel amazing today!" → Joy
+
 "I'm so tired of everything" → Sadness
