@@ -10,7 +10,7 @@ This project predicts human emotions from text using:
 - Streamlit
 
 ### Demo
-🔗 Live App: <your-streamlit-link>
+🔗 Live App: https://emotional-assesment-gynqck7dgwrmcesd6jjkzv.streamlit.app/
 
 ### How it works
 1. User enters text
@@ -21,3 +21,4 @@ This project predicts human emotions from text using:
 "I feel amazing today!" → Joy
 
 "I'm so tired of everything" → Sadness
+
